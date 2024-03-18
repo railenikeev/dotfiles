@@ -93,7 +93,7 @@
 			"spacing": 10
 		},
 		"clock": {
-			"format": "{: %H:%M}",
+			"format": " {:%OI:%M %p}",
 		},
     	"pulseaudio": {
         	"format": "{icon} {volume}%",
