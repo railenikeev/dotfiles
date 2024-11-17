@@ -1,141 +1,82 @@
-	{	
 
-		"height": 48,	
-    	"layer": "top",
-    	"position": "top",
-		"exclusive": true,
-		"passthrough": false,
-		"spacing": 5,
-		"fixed-center": true,
-		
-    	
+{
+  "layer": "bottom",
+  "position": "top", 
+  "height": 28,
+  "reload_style_on_change": true,
 
-		"modules-left": ["custom/logo","hyprland/workspaces"],
-		"modules-center": ["custom/music"],
-		"modules-right": ["tray","pulseaudio","custom/date","clock","hyprland/language"],
+  "modules-left": [ "hyprland/workspaces", "custom/spotify"],
+  "modules-center": [ ],
+  "modules-right": [ "hyprland/language", "clock#time", "tray" ],
 
-		"disk": {
-		    "interval": 30,
-		    "format": "󰋊 {used}",
-		    "format-alt": "󰋊 {total}",
-		    "path": "/"
-		},
-		"backlight": {
-		    "device": "intel_backlight",
-		    "format": "{icon} {percent}%",
-		    "format-icons": ["", ""]
-		},
-		"battery": {
-    			"interval": 60,
-    			"states": {
-        			"warning": 30,
-        			"critical": 15
-    			},
-    			"format": "{icon} {capacity}%",
-				"format-alt": "{time}",
-				"format-time": "{H}h {M}min",
-    			"format-icons": ["", "", "", "", ""],
-    			"max-length": 25
-		},
-		"network": {
-		    "interface": "wlp3s0",
-		    "format": "{ifname}",
-		    "format-wifi": " {essid}",
-		    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-		    "format-disconnected": "", //An empty format will hide the module.
-		    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-		    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-		    "tooltip-format-ethernet": "{ifname} ",
-		    "tooltip-format-disconnected": "Disconnected",
-		    "max-length": 50
-		},
-		"custom/logo": {
-			"format": "󰣇",
-			"on-click": "rofi -show drun",
-			"tooltip": false
-		},
-		"custom/micro": {
-		    "exec": "sleep 0.1 && ~/.config/waybar/micro.sh",
-		    "restart-interval": 1,
-		    "on-click": "~/.config/waybar/micro1.sh",
-		    "tooltip": false
-		},
-		"custom/powermenu": {
-			"format": "",
-			"on-click": "sleep 0.1 && ~/.config/hypr/scripts/powermenu.sh",
-			"tooltip": false
-		},
-		"custom/swaync": {
-			"format": "󰂚",
-			"on-click": "swaync-client -t",
-			"tooltip": false
-		},
-		"custom/weather": {
-			"format": "{}",
-			"interval": 10,
-			"exec": "~/.config/waybar/weather.sh",
-			"tooltip": false
-		},
-		"custom/music": {
-			"max-length": 64,
-			"format": "{}",
-			"interval": 1,
-			"exec": "~/.config/waybar/music.sh",
-			"tooltip": false
-		},
-		"custom/date": {
-			"format": "{}",
-			"exec": " date +'󰃭 %a %d %b' ",
-			"tooltip": false
-		},
-		"tray": {
-			"icon-size": 21,
-			"spacing": 10
-		},
-		"clock": {
-			"format": " {:%OI:%M %p}",
-		},
-    	"pulseaudio": {
-        	"format": "{icon} {volume}%",
-        	"format-bluetooth": "{icon} {volume}%",
-        	"format-bluetooth-muted": " {icon}",
-        	"format-muted": "󰸈",
-        	"format-icons": {
-            		"headphone": "",
-            		"hands-free": "",
-            		"headset": "",
-            		"phone": "",
-            		"portable": "",
-            		"car": "",
-            		"default": ["", "", ""]
-        	},
-        	"on-click": "pamixer --toggle-mute",
-			"on-click-right": "pavucontrol",
-			"tooltip": false
-    	},
-    	"hyprland/window": {
-        	"format": "{}",
-        	"max-length": 60
-    	},
-    	"hyprland/language": {
-        	"format": "{}",
-			"format-en": "en",
-			"format-ru": "ru",
-			"on-click": "hyprctl switchxkblayout company--usb-device- next"
-    	},
-    	"hyprland/workspaces": {
-        	"format": "<span font='11'>{name}</span>",
-        	"on-click": "activate",
-        	"sort-by-number": true
-		},
-		"custom/cava": {
-        	"exec": "cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'",
-        	"tooltip": false
-		},
-		"custom/mako": {
-			"exec": "~/.config/hypr/scripts/check_mako_mode.sh",
-			"on-click": "~/.config/hypr/scripts/do-not-disturb.sh",
-			"restart-interval": 1,
-			"tooltip": false
-		}
+  "hyprland/workspaces": {
+      "on-click-release": "activate",
+      "sort-by-numbers": false,
+          "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "format-icons": {
+                  "1": "1",
+                  "2": "2",
+                  "3": "3",
+                  "4": "4",
+                  "5": "5",
+                  "6": "6",
+                  "7": "7",
+                  "8": "8",
+                  "9": "9",
+                  "10": "10"
+      }
+  },
+  
+  "memory": {
+    "interval": 1,
+    "format": "<span foreground='#d79921'>   </span>{used:0.1f}GiB"
+  },
+
+  "hyprland/language": {
+    "format": "<span size='9000' foreground='#d79921'>  </span>{}",
+	"format-en": "ENG",
+	"format-ru": "RU",
+	"tooltip": false,
+	"on-click-release": "hyprctl switchxkblayout sonix-usb-device next"
+  },
+
+  "network": {
+	"interval": 1,
+	"format-wifi": "<span foreground='#d79921'>{icon}  </span>{essid}<span foreground='#d79921'>      </span>{bandwidthUpBytes}<span foreground='#d79921'>     </span>{bandwidthDownBytes} ",
+    "format-disconnected": "",
+	"format-ethernet": "<span foreground='#d79921'>  </span>Connected",
+	"on-click-right-release": "alacritty --class nmtui -T 'Network Settings' -e nmtui",
+	"on-click-release": "$HOME/.config/waybar/scripts/network.sh",
+	"format-icons": [
+		"󰤯 ",
+		"󰤟 ",
+		"󰤢 ",
+		"󰤥 ", 
+		"󰤨 "
+	]
+  },
+
+  "bluetooth": {
+	  "format-connected": "<span foreground='#d79921' size='11500' rise='-1pt'>󰂯 </span>{device_alias}",
+	  "format": "",
+	  "tooltip": false
+  },
+
+  "clock#time": {
+    "interval": 1,
+    "format": "<span foreground='#d79921' size='10000'> </span>{:%I:%M %p} ",
+    "tooltip": false,
+	"on-click-release": "bash $HOME/.config/waybar/scripts/date.sh"
+
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10,
+	"show-passive-items": true
+  }
+
 }
+
+// vim:ft=jsonc
